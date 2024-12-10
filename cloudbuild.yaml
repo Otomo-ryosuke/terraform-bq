@@ -15,7 +15,7 @@ steps:
     dir: "${_ENVIRONMENT}"
 
 substitutions:
-  _ENVIRONMENT: "state-separetion/develop" # デフォルト環境
+  _ENVIRONMENT: "state-separation/develop" # デフォルト環境
 
 options:
   logging: CLOUD_LOGGING_ONLY
