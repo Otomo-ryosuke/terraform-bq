@@ -1,0 +1,21 @@
+steps:
+  # Terraform初期化
+  - name: "hashicorp/terraform:1.10.0"
+    args: ["init"]
+    dir: "${_ENVIRONMENT}" # 環境ごとのディレクトリ
+
+  # Terraform計画の生成
+  - name: "hashicorp/terraform:1.10.0"
+    args: ["plan", "-out=tfplan"]
+    dir: "${_ENVIRONMENT}"
+
+  # Terraform適用
+  - name: "hashicorp/terraform:1.10.0"
+    args: ["apply", "-auto-approve", "tfplan"]
+    dir: "${_ENVIRONMENT}"
+
+substitutions:
+  _ENVIRONMENT: "state-separetion/develop" # デフォルト環境
+
+options:
+  logging: CLOUD_LOGGING_ONLY
